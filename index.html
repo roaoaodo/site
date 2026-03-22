@@ -77,6 +77,15 @@
       border: 1px solid #222;
     }
 
+    .side-text {
+      font-size: 13px;
+      line-height: 1.7;
+      color: #aaa;
+      white-space: pre-wrap;
+      border-top: 1px solid #1e1e1e;
+      padding-top: 12px;
+    }
+
     @media (max-width: 600px) {
       .layout {
         grid-template-columns: 1fr;
@@ -104,6 +113,9 @@
     <div class="sidebar">
       <img class="side-img" src="cat1.jpg" alt="кот 1">
       <img class="side-img" src="cat2.jpg" alt="кот 2">
+      <img class="side-img" src="cat3.jpg" alt="кот 3">
+      <img class="side-img" src="cat4.jpg" alt="кот 4">
+      <div class="side-text" id="text1-content"></div>
     </div>
   </div>
 
@@ -115,6 +127,15 @@
       })
       .catch(() => {
         document.getElementById('text-content').textContent = 'текст не найден';
+      });
+
+    fetch('text1.txt')
+      .then(r => r.text())
+      .then(t => {
+        document.getElementById('text1-content').textContent = t;
+      })
+      .catch(() => {
+        document.getElementById('text1-content').textContent = '';
       });
   </script>
 </body>
